@@ -9,116 +9,101 @@ import '../commons/opaque_image.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
+    //final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Stack(
+        body: Column(
         children: <Widget>[
-          Column(
-          children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: Stack(
-                children: <Widget>[
-                  OpaqueImage(
-                    imageUrl: "assets/images/signup-avator.jpg",
+    Expanded(
+      flex: 3,
+      child: Stack(
+        children: <Widget>[
+          OpaqueImage(
+            imageUrl: "assets/images/signup-avator.jpg",
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Dashboard", textAlign: TextAlign.left, 
+                    style: TextStyle(fontSize: 22.0, color: Colors.white, )
+                    ),
                   ),
-                  SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text("Dashboard", textAlign: TextAlign.left, 
-                            style: TextStyle(fontSize: 22.0, color: Colors.white, )
-                            ),
-                          ),
-                          MyInfo(),
-                        ],
-                      ),
-                      ),
-                  ),
+                  MyInfo(),
                 ],
               ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Container(
-                color: Colors.black12,
               ),
-            ),
-          ],
-        ),
-        Positioned(
-          top: screenHeight * (4/9) ,
-          left: 16.0,
-          right: 16.0,
-          bottom: 20.0,
-          child: Column(
-            children: <Widget> [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RequestPlanPage()));
-                  },
-                  child: DashboardInfoCard(
-                    imagePath: "assets/images/request-plan.png",
-                    firstName: "Request",
-                    secondName: "Insurance Plan",
-                  ),
-                ),
-                SizedBox(width: 10.0),
-                GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentPlanPage()));
-                  },
-                  child: DashboardInfoCard(
-                    imagePath: "assets/images/current-plan.png",
-                    firstName: "Review",
-                    secondName: "Current Plan",
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-            Align(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => PastPlanPage()));
-                },
-                child: Card(
-                  elevation: 12.0,
-                  margin: EdgeInsets.only(left:15.0),
-                  child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Image.asset(
-                      "assets/images/past-plans.png", color: Theme.of(context).primaryColor, width: 60, height: 80,
-                    ),
-                    SizedBox(height: 10.0),
-                    Text("View", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),),
-                    Text("Past Plans", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),),
-                  ],
-                ),
           ),
-        ),
-              ),
-            ),
-            // DashboardInfoCard(
-            //       imagePath: "assets/images/past-plans.png",
-            //       firstName: "View",
-            //       secondName: "Past Plans",
-            //     ),
-            ],
-          ),
-        ),
         ],
       ),
-    );
+    ),
+    Expanded(
+      flex: 4,
+      child: SingleChildScrollView(
+              child: Column(
+                children: <Widget> [
+                  SizedBox(height: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RequestPlanPage()));
+                            },
+                            child: DashboardInfoCard(
+                            //imagePath: "assets/images/request-plan.png",
+                            imagePath: Icons.receipt,
+                            firstName: "Request",
+                            secondName: "Insurance Plan",
+                            ),
+                          ),
+                        SizedBox(width: 10.0),
+                          GestureDetector(
+                            onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentPlanPage()));
+                            },
+                            child: DashboardInfoCard(
+                            //imagePath: "assets/images/current-plan.png",
+                            imagePath: Icons.cached,
+                            firstName: "Review",
+                            secondName: "Current Plan",
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => PastPlanPage()));
+                            },
+                            child: DashboardInfoCard(
+                            //imagePath: "assets/images/request-plan.png",
+                            imagePath: Icons.beenhere,
+                            firstName: "View Past",
+                            secondName: "Insurance Plans",
+                            ),
+                          ),
+                        SizedBox(width: 10.0),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+          ],
+          ),
+      ),
+    ),
+        ],
+    ),
+      );
   }
 }
