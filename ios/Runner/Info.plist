@@ -27,7 +27,9 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera is needed to take a picture of one's vehicle.</string>
+	<string>Enable myApp to access your camera to capture your photo</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Enable myApp to access mic to record your voice</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
