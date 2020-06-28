@@ -52,7 +52,10 @@ class HomePage extends StatelessWidget {
                         children: <Widget>[
                           GestureDetector(
                             onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RequestPlanPage()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RequestPlanPage(
+                              )
+                              )
+                              );
                             },
                             child: DashboardInfoCard(
                             //imagePath: "assets/images/request-plan.png",
